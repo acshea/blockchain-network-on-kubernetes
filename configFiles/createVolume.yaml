@@ -2,30 +2,30 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: shared-pv
-  labels:
-    type: local
-    name: sharedvolume
+    name: shared-pv
+    labels:
+        type: local
+        name: sharedvolume
 spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: "/tmp"
+    capacity:
+        storage: 1Gi
+    accessModes:
+        - ReadWriteMany
+    hostPath:
+        path: '/tmp'
 
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: shared-pvc
+    name: shared-pvc
 spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: ""
-  selector:
-    matchLabels:
-      name: sharedvolume
+    accessModes:
+        - ReadWriteMany
+    resources:
+        requests:
+            storage: 1Gi
+    storageClassName: ''
+    selector:
+        matchLabels:
+            name: sharedvolume

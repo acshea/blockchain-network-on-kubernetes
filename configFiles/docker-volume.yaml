@@ -2,30 +2,30 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: docker-pv
-  labels:
-    type: local
-    name: dockervolume
+    name: docker-pv
+    labels:
+        type: local
+        name: dockervolume
 spec:
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: "/tmp-docker-pv"
+    capacity:
+        storage: 10Gi
+    accessModes:
+        - ReadWriteMany
+    hostPath:
+        path: '/tmp-docker-pv'
 
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: docker-pvc
+    name: docker-pvc
 spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: ""
-  selector:
-    matchLabels:
-      name: dockervolume
+    accessModes:
+        - ReadWriteMany
+    resources:
+        requests:
+            storage: 10Gi
+    storageClassName: ''
+    selector:
+        matchLabels:
+            name: dockervolume
